@@ -60,18 +60,18 @@ const Calendar = () => {
     <div className="calendar">
       <Container>
         <Row className="mt-4">
-          <Col className="m-4 mb-1 mt-5 pt-4 d-flex align-items-center">
+          <Col className="m-4 mb-1 mt-lg-5 pt-4 d-flex align-items-center">
             <MdOutlineArrowCircleLeft className="text-white" size={30} onClick={handlePreviousMonth} />
             <h1 className="text-white display-4 mx-2">{monthNames[month]}</h1>
             <MdOutlineArrowCircleRight className="text-white" size={30} onClick={handleNextMonth} />
           </Col>
-          <Col className="m-4 mb-1 mt-5 pt-4 d-flex align-items-center">
+          <Col className="ms-4 mb-1 mt-lg-5 pt-lg-4 d-flex align-items-center">
             <MdOutlineArrowCircleLeft className="text-white" size={20} onClick={() => setYear(year - 1)} />
             <h2 className="text-white mt-3 mx-2">{year}</h2>
             <MdOutlineArrowCircleRight className="text-white" size={20} onClick={() => setYear(year + 1)} />
           </Col>
         </Row>
-        <Row className="mt-5 mx-1">
+        <Row className="mt-lg-5 mx-2 mb-5 pb-5">
           {days.map((day, index) => (
             <Col
               key={index}
