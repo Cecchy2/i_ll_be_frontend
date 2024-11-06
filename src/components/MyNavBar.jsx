@@ -18,18 +18,18 @@ const MyNavBar = () => {
 
         <Nav className="ms-auto">
           <Form className="d-flex">
-            <Form.Control type="search" placeholder="Cerca per nome o email" className="me-2" aria-label="Search" />
-            <Button variant="outline-info" type="submit">
+            <Form.Control type="search" placeholder="Cerca amici o eventi" className="me-2" aria-label="Search" />
+            <Button variant="outline-secondary" type="submit">
               Cerca
             </Button>
           </Form>
 
           <NavDropdown title="Login" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Registrati</NavDropdown.Item>
+
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.4">Info</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Container>

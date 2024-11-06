@@ -8,6 +8,7 @@ import Lateral from "./components/Lateral";
 import AmiciPage from "./components/AmiciPage";
 import ChatPage from "./components/ChatPage";
 import EventiPage from "./components/EventiPage";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/amici" element={<AmiciPage />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/eventi" element={<EventiPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </div>
     </BrowserRouter>
