@@ -45,6 +45,9 @@ background-color: rgb(37, 11, 11);
 .homeLink{
     margin-top: 10vh ;
 }
+.logoNav{
+    margin-left: 70vh;
+}
 
 @media (max-width: 991px) {
     .lateral {
@@ -61,6 +64,8 @@ background-color: rgb(37, 11, 11);
       width: 100%;
       margin-left: 0;
     }
-
+    .logoNav{
+        margin-left: 0;
+    }
     
   }
