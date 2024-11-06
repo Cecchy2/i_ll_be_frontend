@@ -13,19 +13,17 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
+    margin-top: 60px;
     
 }
-.main{
+.main {
+    padding-top: 60px; 
     width: 75%;
-    margin-left: 25%; 
+    margin-left: 25%;
     background-color: rgb(19, 19, 19);
-    overflow-y: auto; 
+    overflow-y: auto;
     height: 100vh;
-}
-.lateral-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
   }
 .go-home{
     color: rgb(255, 255, 255);
@@ -43,4 +41,11 @@ background-color: rgb(37, 11, 11);
     background-color: rgb(19, 19, 19);
     overflow-y: auto; 
     height: 100vh;
+}
+.homeLink{
+    margin-top: 10vh ;
+}
+
+.logoNav{
+    margin-left: 50vw;
 }

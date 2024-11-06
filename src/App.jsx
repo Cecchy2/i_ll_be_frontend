@@ -2,22 +2,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import Lateral from "./components/Lateral";
 import Calendar from "./components/Calendar";
+import MyNavBar from "./components/MyNavBar";
+import Lateral from "./components/Lateral";
+import AmiciPage from "./components/AmiciPage";
+import ChatPage from "./components/ChatPage";
+import EventiPage from "./components/EventiPage";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <div className="d-flex">
-          <Lateral className="lateral-fixed" />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/calendar" element={<Calendar />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <MyNavBar />
+      <div className="d-flex">
+        <Lateral />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/amici" element={<AmiciPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/eventi" element={<EventiPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
