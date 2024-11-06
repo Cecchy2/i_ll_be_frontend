@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { MdOutlineArrowCircleRight } from "react-icons/md";
-import { MdOutlineArrowCircleLeft } from "react-icons/md";
+
+import { BiLeftArrow } from "react-icons/bi";
+import { BiRightArrow } from "react-icons/bi";
 
 const Calendar = () => {
   const [days, setDays] = useState([]);
@@ -61,14 +62,14 @@ const Calendar = () => {
       <Container>
         <Row className="mt-4">
           <Col className="m-4 mb-1 mt-lg-5 pt-4 d-flex align-items-center">
-            <MdOutlineArrowCircleLeft className="text-white" size={30} onClick={handlePreviousMonth} />
+            <BiLeftArrow className="text-white arrowsCalendar" size={30} onClick={handlePreviousMonth} />
             <h1 className="text-white display-4 mx-2">{monthNames[month]}</h1>
-            <MdOutlineArrowCircleRight className="text-white" size={30} onClick={handleNextMonth} />
+            <BiRightArrow className="text-white arrowsCalendar" size={30} onClick={handleNextMonth} />
           </Col>
           <Col className="ms-4 mb-1 mt-lg-5 pt-lg-4 d-flex align-items-center">
-            <MdOutlineArrowCircleLeft className="text-white" size={20} onClick={() => setYear(year - 1)} />
-            <h2 className="text-white mt-3 mx-2">{year}</h2>
-            <MdOutlineArrowCircleRight className="text-white" size={20} onClick={() => setYear(year + 1)} />
+            <BiLeftArrow className="text-white arrowsCalendar" size={20} onClick={() => setYear(year - 1)} />
+            <h2 className="text-white mt-3 mx-2 mb-3">{year}</h2>
+            <BiRightArrow className="text-white arrowsCalendar" size={20} onClick={() => setYear(year + 1)} />
           </Col>
         </Row>
         <Row className="mt-lg-5 mx-2 mb-5 pb-5">

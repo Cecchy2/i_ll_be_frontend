@@ -1,5 +1,6 @@
 import { Button, Container, Form, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 
 const MyNavBar = () => {
   const navigate = useNavigate();
@@ -18,9 +19,9 @@ const MyNavBar = () => {
 
         <Nav className="ms-auto">
           <Form className="d-flex">
-            <Form.Control type="search" placeholder="Cerca amici o eventi" className="me-2" aria-label="Search" />
-            <Button variant="outline-secondary" type="submit">
-              Cerca
+            <Form.Control type="search" placeholder="Cerca amici o eventi" className="me-2 " aria-label="Search" />
+            <Button variant="outline-info" type="submit" className="btn-search">
+              <BsSearch className="mb-2" />
             </Button>
           </Form>
 

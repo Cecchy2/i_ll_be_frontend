@@ -71,5 +71,13 @@ background-color: rgb(37, 11, 11);
     border-radius: 10px;
     margin-top: 22vh;
     box-shadow: 0px 0px 5px 0px rgba(48, 48, 48, 0.75);
+  }
+  .btn-search{
+    height: 33px;
+    margin-top: 3px;
+  }
+  .arrowsCalendar:hover{
+cursor: pointer;
+transform: scale(1.2);
 
   }
