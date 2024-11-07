@@ -72,6 +72,14 @@ background-color: rgb(37, 11, 11);
     margin-top: 22vh;
     box-shadow: 0px 0px 5px 0px rgba(48, 48, 48, 0.75);
   }
+  .registerCard{
+    width: 400px;
+    height: 600px;
+    background-color: #9BC4BC;
+    border-radius: 10px;
+    margin-top: 15vh;
+    box-shadow: 0px 0px 5px 0px rgba(48, 48, 48, 0.75);
+  }
   .btn-search{
     height: 33px;
     margin-top: 3px;
@@ -84,4 +92,12 @@ transform: scale(1.2);
   .badgeDay{
     width: 40px;
     height: 40px;
+  }
+
+  .chatLines{
+    background-color: rgb(215, 215, 193);
+    min-height: 60vh;
+    margin-inline: 5% ;
+    
+    
   }

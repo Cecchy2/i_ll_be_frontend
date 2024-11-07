@@ -1,6 +1,6 @@
 const AmiciPage = () => {
   return (
-    <div>
+    <div className="main">
       <h1>AmiciPage</h1>
     </div>
   );

@@ -82,7 +82,7 @@ const Calendar = () => {
               className="text-center text-white rounded border border-white p-2 m-1 casellaGiorno"
             >
               <p className="m-0 text-info">{day.dayName}</p>
-              {today.getDate() === day.day ? (
+              {today.getDate() === day.day && today.getMonth() === month && today.getFullYear() === year ? (
                 <Badge pill bg="secondary" className="rounded-circle badgeDay">
                   <h4>{day.day}</h4>
                 </Badge>

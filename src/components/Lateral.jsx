@@ -11,7 +11,7 @@ const Lateral = () => {
       {/* ***********************************************Sidebar per desktop***********************************************  */}
       <div className="lateral d-none d-lg-block">
         <div className="d-flex justify-content-center">
-          <Image src="/public/I'LLBE LOGO.webp" alt="logo" width={200} className="mt-5" roundedCircle />
+          <Image src="/I'LLBE LOGO.webp" alt="logo" width={200} className="mt-5" roundedCircle />
         </div>
 
         <Nav.Link href="/" className="d-flex justify-content-center homeLink">
