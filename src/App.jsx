@@ -9,6 +9,7 @@ import AmiciPage from "./components/AmiciPage";
 import ChatPage from "./components/ChatPage";
 import EventiPage from "./components/EventiPage";
 import LoginPage from "./components/LoginPage";
+import RegistrazionePage from "./components/RegistrazionePage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/eventi" element={<EventiPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/registrazione" element={<RegistrazionePage />} />
         </Routes>
       </div>
     </BrowserRouter>

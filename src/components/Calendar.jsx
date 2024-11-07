@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Badge, Col, Container, Row } from "react-bootstrap";
 
 import { BiLeftArrow } from "react-icons/bi";
 import { BiRightArrow } from "react-icons/bi";
@@ -57,6 +57,8 @@ const Calendar = () => {
     }
   };
 
+  const today = new Date();
+
   return (
     <div className="calendar">
       <Container>
@@ -80,7 +82,13 @@ const Calendar = () => {
               className="text-center text-white rounded border border-white p-2 m-1 casellaGiorno"
             >
               <p className="m-0 text-info">{day.dayName}</p>
-              <h4>{day.day}</h4>
+              {today.getDate() === day.day ? (
+                <Badge pill bg="secondary" className="rounded-circle badgeDay">
+                  <h4>{day.day}</h4>
+                </Badge>
+              ) : (
+                <h4>{day.day}</h4>
+              )}
             </Col>
           ))}
         </Row>

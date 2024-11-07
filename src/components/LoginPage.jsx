@@ -1,4 +1,5 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   return (
@@ -9,7 +10,8 @@ const LoginPage = () => {
             <Row>
               <Col className="d-flex justify-content-center mt-5 ">
                 <Form>
-                  <Form.Group className="" controlId="formBasicEmail">
+                  <h3>Login</h3>
+                  <Form.Group className="mt-4" controlId="formBasicEmail">
                     <Form.Label className="">✉️ Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
                   </Form.Group>
@@ -22,6 +24,10 @@ const LoginPage = () => {
                   <Button variant="outline-dark" type="submit">
                     Submit
                   </Button>
+                  <div className="d-flex justify-content-center align-items-center  mt-4">
+                    <p className="mt-3"> Non sei ancora registrato? </p>
+                    <Link to="/registrazione"> &nbsp; Registrati </Link>
+                  </div>
                 </Form>
               </Col>
             </Row>
