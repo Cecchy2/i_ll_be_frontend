@@ -10,6 +10,7 @@ import ChatPage from "./components/ChatPage";
 import EventiPage from "./components/EventiPage";
 import LoginPage from "./components/LoginPage";
 import RegistrazionePage from "./components/RegistrazionePage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/registrazione" element={<RegistrazionePage />} />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

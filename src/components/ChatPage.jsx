@@ -6,7 +6,7 @@ const ChatPage = () => {
       <h1 className="text-center mt-3 mb-5 text-white">•ChatPage•</h1>
       <Container>
         <Row>
-          <Col className="chatLines">ciao</Col>
+          <Col className="chatLines"></Col>
         </Row>
       </Container>
     </div>
