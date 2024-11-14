@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { connectToWebSocket, sendMessage, disconnectWebSocket } from "../redux/actions/chatActions";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const username = useSelector((state) => state.utente.utente.username);
+  console.log(username);
 
   useEffect(() => {
     connectToWebSocket((message) => {
       console.log("New message received:", message);
       setMessages((prevMessages) => [...prevMessages, message]);
     });
-
-    // Cleanup per disconnettere il WebSocket quando il componente viene smontato
     return () => {
       disconnectWebSocket();
     };
@@ -20,7 +21,7 @@ const ChatPage = () => {
 
   const handleSendMessage = () => {
     if (input.trim() !== "") {
-      sendMessage(input);
+      sendMessage(input, username);
       setInput("");
     }
   };
@@ -30,7 +31,9 @@ const ChatPage = () => {
       <h1 className="text-center mt-3 mb-5 text-white">• ChatPage •</h1>
       <div className="chatLines">
         {messages.map((msg, index) => (
-          <h5 key={index}>{msg.content}</h5>
+          <h2 key={index}>
+            {msg.sender}: {msg.content}
+          </h2>
         ))}
       </div>
       <InputGroup className="mb-3 px-5">

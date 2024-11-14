@@ -20,9 +20,9 @@ export const connectToWebSocket = (onMessageReceived) => {
   );
 };
 
-export const sendMessage = (messageContent) => {
+export const sendMessage = (messageContent, username) => {
   if (stompClient && stompClient.connected) {
-    stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({ content: messageContent }));
+    stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({ content: messageContent, sender: username }));
   } else {
     console.error("WebSocket is not connected.");
   }
