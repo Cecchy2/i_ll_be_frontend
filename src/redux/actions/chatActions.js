@@ -1,40 +1,37 @@
-export const CONNECT_WEBSOCKET = "CONNECT_WEBSOCKET";
-export const DISCONNECT_WEBSOCKET = "DISCONNECT_WEBSOCKET";
-export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
+import { Stomp } from "@stomp/stompjs";
 
-let socket = null;
+let stompClient = null;
 
-export const connectWebSocket = () => (dispatch) => {
-  socket = new WebSocket("ws://localhost:3002/ws");
+export const connectToWebSocket = (onMessageReceived) => {
+  stompClient = Stomp.over(() => new WebSocket("ws://localhost:3002/ws"));
 
-  socket.onopen = () => {
-    console.log("Connected to WebSocket");
-    dispatch({ type: "WEBSOCKET_CONNECTED" });
-  };
-
-  socket.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    dispatch({ type: "NEW_MESSAGE", payload: message });
-  };
-
-  socket.onerror = (error) => {
-    console.error("WebSocket error:", error);
-    dispatch({ type: "WEBSOCKET_ERROR", payload: error });
-  };
-
-  socket.onclose = () => {
-    console.log("WebSocket connection closed");
-    dispatch({ type: "WEBSOCKET_DISCONNECTED" });
-  };
+  stompClient.connect(
+    {},
+    () => {
+      console.log("Connected to WebSocket via Stomp.js");
+      // Subscribe to the /topic/public channel
+      stompClient.subscribe("/topic/public", (message) => {
+        onMessageReceived(JSON.parse(message.body));
+      });
+    },
+    (error) => {
+      console.error("WebSocket connection error:", error);
+    }
+  );
 };
 
-export const sendMessage = (message) => {
-  return () => {
-    if (socket && socket.readyState === WebSocket.OPEN) {
-      console.log("Sending message:", message);
-      socket.send(JSON.stringify(message));
-    } else {
-      console.error("WebSocket is not open. Cannot send message.");
-    }
-  };
+export const sendMessage = (messageContent) => {
+  if (stompClient && stompClient.connected) {
+    stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({ content: messageContent }));
+  } else {
+    console.error("WebSocket is not connected.");
+  }
+};
+
+export const disconnectWebSocket = () => {
+  if (stompClient) {
+    stompClient.disconnect(() => {
+      console.log("WebSocket disconnected");
+    });
+  }
 };
