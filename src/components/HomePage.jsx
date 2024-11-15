@@ -23,7 +23,13 @@ const HomePage = () => {
             </Button>
           </Col>
           <Col>
-            <Image src={utente.immagine} roundedCircle width={200} className="mt-5 ms-5" />
+            <Image
+              src={utente.immagine}
+              roundedCircle
+              width={200}
+              height={200}
+              className="mt-4 ms-5 object-fit-cover"
+            />
           </Col>
         </Row>
         <Row className="mt-5">
