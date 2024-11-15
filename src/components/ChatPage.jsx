@@ -36,13 +36,18 @@ const ChatPage = () => {
           </h2>
         ))}
       </div>
-      <InputGroup className="mb-3 px-5">
+      <InputGroup className="mt-3 px-5">
         <Form.Control
           placeholder="Type a message..."
           aria-label="Username"
           aria-describedby="basic-addon1"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSendMessage();
+            }
+          }}
         />
         <Button variant="warning" onClick={handleSendMessage}>
           Send
