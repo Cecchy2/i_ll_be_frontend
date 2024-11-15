@@ -97,18 +97,8 @@ transform: scale(1.2);
   .chatLines{
     background-color: rgb(215, 215, 193);
     min-height: 60vh;
-    margin-inline: 5% ;   
+    margin-inline: 1% ;
+    border-radius: 10px;   
   }
 
-  .chatBox{
-    width: 200px;
-    height: 30px;
-    background-color: #9BC4BC;
-    
-    position: fixed;
-    bottom: 0; 
-    right: 100px;
-    width: 15%; 
-    z-Index: 1000;
-    border-radius: 5px 5px 0 0;
-  }
+  
