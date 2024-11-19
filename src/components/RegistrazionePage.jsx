@@ -9,6 +9,7 @@ const RegistrazionePage = () => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const [formValues, setFormValues] = useState({
     username: "",
@@ -19,6 +20,7 @@ const RegistrazionePage = () => {
   });
 
   const [immagine, setImmagine] = useState(null);
+  const [immagineCopertina, setImmagineCopertina] = useState(null);
 
   const handleChange = (e) => {
     setFormValues({
@@ -30,17 +32,21 @@ const RegistrazionePage = () => {
   const handleImmagineChange = (e) => {
     setImmagine(e.target.files[0]);
   };
+  const handleImmagineCopertinaChange = (e) => {
+    setImmagineCopertina(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const result = await dispatch(register(formValues, immagine));
+    setError(null);
+    const result = await dispatch(register(formValues, immagine, immagineCopertina));
 
     if (result.success) {
       alert("Registrazione avvenuta con successo");
       navigate(`/login`);
     } else {
-      alert(`Registrazione fallita: ${result.message || "Errore sconosciuto"}`);
+      setError(result.message || "Errore sconosciuto durante la registrazione.");
     }
     setLoading(false);
   };
@@ -54,7 +60,7 @@ const RegistrazionePage = () => {
               <Col className="d-flex justify-content-center mt-3 ">
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="formNome" className="mb-3">
-                    <Form.Label>Nome</Form.Label>
+                    <Form.Label className="m-0">Nome</Form.Label>
                     <Form.Control
                       type="text"
                       name="nome"
@@ -66,7 +72,7 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formCognome" className="mb-3">
-                    <Form.Label>Cognome</Form.Label>
+                    <Form.Label className="m-0">Cognome</Form.Label>
                     <Form.Control
                       type="text"
                       name="cognome"
@@ -78,7 +84,7 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formUsername" className="mb-3">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label className="m-0">Username</Form.Label>
                     <Form.Control
                       type="text"
                       name="username"
@@ -90,7 +96,7 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formEmail" className="mb-3">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label className="m-0">Email</Form.Label>
                     <Form.Control
                       type="email"
                       name="email"
@@ -102,7 +108,7 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formPassword" className="mb-3">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label className="m-0">Password</Form.Label>
                     <Form.Control
                       type="password"
                       name="password"
@@ -114,12 +120,21 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formAvatar" className="mb-3">
-                    <Form.Label>Immagine Profilo (Opzionale)</Form.Label>
+                    <Form.Label className="m-0">Immagine Profilo (Opzionale)</Form.Label>
                     <Form.Control type="file" name="immagine" onChange={handleImmagineChange} accept="image/*" />
+                  </Form.Group>
+                  <Form.Group controlId="formImmagineCopertina" className="mb-3">
+                    <Form.Label>Immagine Copertina (Opzionale)</Form.Label>
+                    <Form.Control
+                      type="file"
+                      name="immagineCopertina"
+                      onChange={handleImmagineCopertinaChange}
+                      accept="image/*"
+                    />
                   </Form.Group>
 
                   <div className="d-flex justify-content-center">
-                    <Button variant="primary" type="submit" className="px-5" disabled={loading}>
+                    <Button variant="outline-dark" type="submit" className="px-5 mb-3" disabled={loading}>
                       {loading ? (
                         <>
                           <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -129,6 +144,7 @@ const RegistrazionePage = () => {
                         "Registrati"
                       )}
                     </Button>
+                    {error && <p className="text-danger mt-3">{error}</p>}
                   </div>
                 </Form>
               </Col>

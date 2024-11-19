@@ -1,4 +1,4 @@
-import { UPLOAD_IMMAGINE } from "../actions/imagesUploadActions";
+import { UPLOAD_IMMAGINE, UPLOAD_IMMAGINE_COPERTNA } from "../actions/imagesUploadActions";
 import { GET_PROFILE, UPDATE_PROFILE } from "../actions/utentiActions";
 
 const initialState = {
@@ -22,7 +22,15 @@ const utenteReducer = (state = initialState, action) => {
         ...state,
         utente: {
           ...state.utente,
-          avatar: action.payload.avatar,
+          immagine: action.payload.immagine,
+        },
+      };
+    case UPLOAD_IMMAGINE_COPERTNA:
+      return {
+        ...state,
+        utente: {
+          ...state.utente,
+          immagineCopertina: action.payload.immagineCopertina,
         },
       };
     default:

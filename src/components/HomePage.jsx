@@ -1,16 +1,18 @@
-import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Card, Col, Container, Image, Modal, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const utente = useSelector((state) => state.utente.utente);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className="main">
-      <Image
-        src="https://images.unsplash.com/photo-1728327511297-948650da8ed9?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="immagine copertina"
-        className="immagineCopertina"
-      />
+      <Image src={utente.immagineCopertina} alt="immagine copertina" className="immagineCopertina" />
+
       <Container>
         <Row>
           <Col>
@@ -18,9 +20,23 @@ const HomePage = () => {
               {utente.nome} {utente.cognome}
             </h1>
             <h4 className="text-white ms-5">Username : {utente.username}</h4>
-            <Button variant="outline-light" className="ms-5">
+            <Button variant="outline-light" className="ms-5" onClick={handleShow}>
               Modifica Profilo
             </Button>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </Col>
           <Col>
             <Image

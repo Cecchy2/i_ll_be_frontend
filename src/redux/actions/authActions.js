@@ -49,7 +49,7 @@ export const logout = () => {
   };
 };
 
-export const register = (payload, immagine) => {
+export const register = (payload, immagine, immagineCopertina) => {
   return async (dispatch) => {
     const baseEndPoint = `${baseURL}/authorization/register`;
 
@@ -59,6 +59,9 @@ export const register = (payload, immagine) => {
     });
     if (immagine) {
       formData.append("immagine", immagine);
+    }
+    if (immagineCopertina) {
+      formData.append("immagineCopertina", immagineCopertina);
     }
     try {
       const resp = await fetch(baseEndPoint, {
@@ -75,6 +78,7 @@ export const register = (payload, immagine) => {
       return { success: true, userId: data.id };
     } catch (error) {
       console.error("Errore durante la registrazione:", error.message);
+      return { success: false, message: "Errore durante la connessione al server. Riprova più tardi." };
     }
   };
 };
