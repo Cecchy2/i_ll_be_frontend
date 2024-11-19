@@ -107,4 +107,9 @@ transform: scale(1.2);
     object-fit: cover;
   }
 
-  
+  .immagineCopertina:hover{
+    cursor: pointer;
+    border: solid 2px;
+    border-radius: 8px;
+    border-color: rgb(88, 98, 98);
+  }

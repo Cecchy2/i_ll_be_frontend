@@ -144,8 +144,8 @@ const RegistrazionePage = () => {
                         "Registrati"
                       )}
                     </Button>
-                    {error && <p className="text-danger mt-3">{error}</p>}
                   </div>
+                  {error && <p className="text-danger mt-3">{error}</p>}
                 </Form>
               </Col>
             </Row>

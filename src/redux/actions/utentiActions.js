@@ -26,9 +26,9 @@ export const getProfile = (id) => {
   };
 };
 
-export const updateProfile = (id, utentePayload) => {
+export const updateProfile = (utentePayload) => {
   return async (dispatch) => {
-    const baseEndPoint = `${baseURL}/utenti/${id}`;
+    const baseEndPoint = `${baseURL}/utenti/me`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -43,10 +43,11 @@ export const updateProfile = (id, utentePayload) => {
         throw new Error(`Failed to fetch profile: ${resp.status} ${resp.statusText}`);
       }
       const result = await resp.json();
-      console.log("Utente modificato" + result);
       dispatch({ type: UPDATE_PROFILE, payload: result });
+      return { success: true, data: result };
     } catch (error) {
-      console.log(error);
+      console.error("Errore durante la modifica del profilo: ", error);
+      return { success: false, message: "Errore durante la connessione al server." };
     }
   };
 };
