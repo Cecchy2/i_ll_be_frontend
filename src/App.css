@@ -113,3 +113,12 @@ transform: scale(1.2);
     border-radius: 8px;
     border-color: rgb(88, 98, 98);
   }
+
+  .amiciImage{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  
