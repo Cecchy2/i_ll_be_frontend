@@ -10,6 +10,7 @@ import ChatPage from "./components/ChatPage";
 import EventiPage from "./components/EventiPage";
 import LoginPage from "./components/LoginPage";
 import RegistrazionePage from "./components/RegistrazionePage";
+import ProfiloPage from "./components/ProfiloPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/eventi" element={<EventiPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registrazione" element={<RegistrazionePage />} />
+          <Route path="/profilo" element={<ProfiloPage />} />
         </Routes>
       </div>
     </BrowserRouter>
