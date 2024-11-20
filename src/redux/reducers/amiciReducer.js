@@ -1,7 +1,8 @@
-import { ADD_AMICO, ADD_AMICO_ERROR, DELETE_AMICO, GET_AMICI, GET_UTENTI } from "../actions/amiciActions";
+import { ADD_AMICO, ADD_AMICO_ERROR, DELETE_AMICO, GET_AMICI, GET_AMICO, GET_UTENTI } from "../actions/amiciActions";
 
 const initialState = {
   amici: [],
+  amico: {},
   utenti: [],
   error: null,
 };
@@ -32,6 +33,11 @@ const amiciReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case GET_AMICO:
+      return {
+        ...state,
+        amico: action.payload,
       };
     default:
       return state;

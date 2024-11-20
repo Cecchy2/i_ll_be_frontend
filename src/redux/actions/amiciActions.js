@@ -4,6 +4,7 @@ export const GET_AMICI = "GET_AMICI";
 export const ADD_AMICO = "ADD_AMICO";
 export const DELETE_AMICO = "DELETE_AMICO";
 export const ADD_AMICO_ERROR = "ADD_AMICO_ERROR";
+export const GET_AMICO = "GET_AMICO";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
@@ -37,9 +38,9 @@ export const addAmico = (utente1Id, utente2Id) => {
   };
 };
 
-export const getAmici = () => {
+export const getAmici = (utenteId) => {
   return async (dispatch) => {
-    const baseEndPoint = `${baseURL}/amicizie`;
+    const baseEndPoint = `${baseURL}/amicizie/${utenteId}/amici`;
     const token = localStorage.getItem("authToken");
     try {
       const resp = await fetch(baseEndPoint, {
@@ -116,6 +117,27 @@ export const getAllUtenti = () => {
       }
       const result = await resp.json();
       dispatch({ type: GET_UTENTI, payload: result });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getAmico = (amicoId) => {
+  return async (dispatch) => {
+    const baseEndPoint = `${baseURL}/amicizie/${amicoId}`;
+    const token = localStorage.getItem("authToken");
+    try {
+      const resp = await fetch(baseEndPoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!resp.ok) {
+        throw new Error(`Failed to fetch amico: ${resp.status} ${resp.statusText}`);
+      }
+      const result = await resp.json();
+      dispatch({ type: GET_AMICO, payload: result });
     } catch (error) {
       console.log(error);
     }
