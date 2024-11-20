@@ -6,7 +6,7 @@ export const DELETE_AMICO = "DELETE_AMICO";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
-export const addAmico = (amiciziaPayload) => {
+export const addAmico = (utente1Id, utente2Id) => {
   return async (dispatch) => {
     const baseEndPoint = `${baseURL}/amicizie`;
     const token = localStorage.getItem("authToken");
@@ -17,7 +17,10 @@ export const addAmico = (amiciziaPayload) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(amiciziaPayload),
+        body: JSON.stringify({
+          utente1: utente1Id,
+          utente2: utente2Id,
+        }),
       });
       if (!resp.ok) {
         throw new Error(`Failed to add amicizia: ${resp.status} ${resp.statusText}`);
