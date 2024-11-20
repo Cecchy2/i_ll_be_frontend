@@ -3,6 +3,7 @@ import { Button, Card, Col, Container, Form, Image, Modal, Row } from "react-boo
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../redux/actions/utentiActions";
 import { AiTwotoneCloseSquare } from "react-icons/ai";
+import { uploadImmagineCopertina } from "../redux/actions/imagesUploadActions";
 
 const HomePage = () => {
   const utente = useSelector((state) => state.utente.utente);
@@ -10,6 +11,9 @@ const HomePage = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [showModalCopertina, setShowModalCopertina] = useState(false);
+  const handleCloseModalCopertina = () => setShowModalCopertina(false);
+  const handleShowModalCopertina = () => setShowModalCopertina(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
@@ -55,9 +59,77 @@ const HomePage = () => {
     setLoading(false);
   };
 
+  const handleImmagineCopertinaChange = async (e) => {
+    const immagineCopertina = e?.target?.files?.[0];
+    if (!immagineCopertina) {
+      setError("Nessuna immagine selezionata.");
+      return;
+    }
+
+    try {
+      const result = await dispatch(uploadImmagineCopertina(immagineCopertina));
+      if (result.success) {
+        setSuccess("Immagine copertina aggiornata con successo!");
+        setError(null);
+      } else {
+        throw new Error(result.message || "Errore durante l'aggiornamento dell'immagine.");
+      }
+    } catch (error) {
+      console.error(error);
+      setError("Errore durante il caricamento dell'immagine.");
+    }
+  };
+
   return (
     <div className="main">
-      <Image src={utente.immagineCopertina} alt="immagine copertina" className="immagineCopertina" />
+      <Image
+        src={
+          utente.immagineCopertina
+            ? utente.immagineCopertina
+            : "https://images.unsplash.com/photo-1499343162160-cd1441923dd3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+        alt="immagine copertina"
+        className="immagineCopertina"
+        onClick={handleShowModalCopertina}
+      />
+      <Modal show={showModalCopertina} onHide={handleCloseModalCopertina}>
+        <Modal.Header closeButton>
+          <Modal.Title>Cambia Immagine Copertina</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Label>Immagine Copertina</Form.Label>
+          <Form.Control
+            type="file"
+            name="immagineCopertina"
+            onChange={handleImmagineCopertinaChange}
+            accept="image/*"
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModalCopertina}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              setLoading(true);
+              handleImmagineCopertinaChange();
+              setLoading(false);
+              handleCloseModalCopertina();
+            }}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Salvataggio...
+              </>
+            ) : (
+              "Save Changes"
+            )}
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <Container>
         <Row>

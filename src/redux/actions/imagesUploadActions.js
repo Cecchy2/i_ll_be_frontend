@@ -5,7 +5,7 @@ const baseURL = import.meta.env.VITE_API_URL;
 
 export const uploadAvatar = (immagine) => {
   return async (dispatch) => {
-    const baseEndPoint = `${baseURL}/utenti/me`;
+    const baseEndPoint = `${baseURL}/utenti/me/immagine`;
     const token = localStorage.getItem("authToken");
     const formData = new FormData();
     formData.append("immagine", immagine);
@@ -32,7 +32,7 @@ export const uploadAvatar = (immagine) => {
 
 export const uploadImmagineCopertina = (immagineCopertina) => {
   return async (dispatch) => {
-    const baseEndPoint = `${baseURL}/utenti/me`;
+    const baseEndPoint = `${baseURL}/utenti/me/immagineCopertina`;
     const token = localStorage.getItem("authToken");
     const formData = new FormData();
     formData.append("immagineCopertina", immagineCopertina);
