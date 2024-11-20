@@ -3,6 +3,7 @@ export const GET_UTENTI = "GET_UTENTI";
 export const GET_AMICI = "GET_AMICI";
 export const ADD_AMICO = "ADD_AMICO";
 export const DELETE_AMICO = "DELETE_AMICO";
+export const ADD_AMICO_ERROR = "ADD_AMICO_ERROR";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
@@ -23,12 +24,15 @@ export const addAmico = (utente1Id, utente2Id) => {
         }),
       });
       if (!resp.ok) {
-        throw new Error(`Failed to add amicizia: ${resp.status} ${resp.statusText}`);
+        const errorData = await resp.json();
+        throw new Error(errorData.message || `Errore ${resp.status}: ${resp.statusText}`);
       }
+
       const result = await resp.json();
       dispatch({ type: ADD_AMICO, payload: result });
     } catch (error) {
-      console.log(error);
+      console.error(error.message);
+      dispatch({ type: ADD_AMICO_ERROR, payload: error.message });
     }
   };
 };
