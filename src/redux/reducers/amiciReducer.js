@@ -1,4 +1,5 @@
 import { ADD_AMICO, ADD_AMICO_ERROR, DELETE_AMICO, GET_AMICI, GET_AMICO, GET_UTENTI } from "../actions/amiciActions";
+import { UPDATE_ONLINE_STATUS } from "../actions/onlineActions";
 
 const initialState = {
   amici: [],
@@ -38,6 +39,12 @@ const amiciReducer = (state = initialState, action) => {
       return {
         ...state,
         amico: action.payload,
+      };
+    case UPDATE_ONLINE_STATUS:
+      return {
+        ...state,
+        utenti: state.utenti.map((utente) => (utente.id === action.payload.id ? action.payload : utente)),
+        amici: state.amici.map((amico) => (amico.id === action.payload.id ? action.payload : amico)),
       };
     default:
       return state;

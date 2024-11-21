@@ -130,4 +130,17 @@ transform: scale(1.2);
     border-radius: 10px;
     
   }
+
+  .status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  .bg-success {
+    background-color: green;
+  }
+  .bg-secondary {
+    background-color: gray;
+  }
   
