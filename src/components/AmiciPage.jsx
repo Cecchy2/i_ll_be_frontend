@@ -9,8 +9,6 @@ const AmiciPage = () => {
   const dispatch = useDispatch();
   const amici = useSelector((state) => state.amicizie.amici);
   const navigate = useNavigate();
-  console.log(utente);
-  console.log(amici);
 
   useEffect(() => {
     if (utente?.id) {
@@ -26,7 +24,11 @@ const AmiciPage = () => {
         <Row>
           {amici.map((amico) => (
             <Col key={amico.id}>
-              <Card className="m-3 p-3 amiciCard text-white " bg="dark">
+              <Card
+                className="m-3 p-3 amiciCard text-white "
+                bg="dark"
+                onClick={() => navigate(`/profiloAmico/${amico.id}`)}
+              >
                 <Card.Img variant="top" src={amico.immagine} className="amiciImage border border-warning" />
                 <Card.Body>
                   <Card.Title className="m-0 fs-6">{amico.username}</Card.Title>

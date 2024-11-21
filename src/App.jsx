@@ -11,6 +11,7 @@ import EventiPage from "./components/EventiPage";
 import LoginPage from "./components/LoginPage";
 import RegistrazionePage from "./components/RegistrazionePage";
 import ProfiloPage from "./components/ProfiloPage";
+import ProfiloAmicoPage from "./components/ProfiloAmicoPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registrazione" element={<RegistrazionePage />} />
           <Route path="/profilo" element={<ProfiloPage />} />
+          <Route path="/profiloAmico/:amicoId" element={<ProfiloAmicoPage />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -11,9 +11,6 @@ const HomePage = () => {
   const [show, setShow] = useState(false);
   const [utenteSelezionato, setUtenteSelezionato] = useState(null);
 
-  console.log(utenteProfilo);
-  console.log(utenteSelezionato);
-
   const handleClose = () => {
     setShow(false);
     setUtenteSelezionato(null);

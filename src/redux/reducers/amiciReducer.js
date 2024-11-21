@@ -2,7 +2,7 @@ import { ADD_AMICO, ADD_AMICO_ERROR, DELETE_AMICO, GET_AMICI, GET_AMICO, GET_UTE
 
 const initialState = {
   amici: [],
-  amico: {},
+  amico: null,
   utenti: [],
   error: null,
 };

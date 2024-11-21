@@ -137,9 +137,11 @@ export const getAmico = (amicoId) => {
         throw new Error(`Failed to fetch amico: ${resp.status} ${resp.statusText}`);
       }
       const result = await resp.json();
+      console.log(result);
       dispatch({ type: GET_AMICO, payload: result });
     } catch (error) {
       console.log(error);
+      dispatch({ type: GET_AMICO, payload: null });
     }
   };
 };
