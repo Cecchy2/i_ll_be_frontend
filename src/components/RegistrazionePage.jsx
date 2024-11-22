@@ -134,7 +134,7 @@ const RegistrazionePage = () => {
                   </Form.Group>
 
                   <div className="d-flex justify-content-center">
-                    <Button variant="outline-dark" type="submit" className="px-5 mb-3" disabled={loading}>
+                    <Button variant="outline-dark" type="submit" className="px-5 mb-5" disabled={loading}>
                       {loading ? (
                         <>
                           <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

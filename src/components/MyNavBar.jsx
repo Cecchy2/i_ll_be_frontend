@@ -54,7 +54,7 @@ const MyNavBar = () => {
             {isAuthenticated ? (
               <NavDropdown
                 title=<Image
-                  src={utente.immagine}
+                  src={utente?.immagine}
                   alt="avatar"
                   roundedCircle
                   width={35}
