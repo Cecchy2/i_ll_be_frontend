@@ -124,7 +124,7 @@ const RegistrazionePage = () => {
                     <Form.Control type="file" name="immagine" onChange={handleImmagineChange} accept="image/*" />
                   </Form.Group>
                   <Form.Group controlId="formImmagineCopertina" className="mb-3">
-                    <Form.Label>Immagine Copertina (Opzionale)</Form.Label>
+                    <Form.Label className="m-0">Immagine Copertina (Opzionale)</Form.Label>
                     <Form.Control
                       type="file"
                       name="immagineCopertina"
