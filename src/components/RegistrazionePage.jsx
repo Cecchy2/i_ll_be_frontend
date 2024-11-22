@@ -44,7 +44,7 @@ const RegistrazionePage = () => {
 
     if (result.success) {
       alert("Registrazione avvenuta con successo");
-      navigate(`/login`);
+      navigate(`/`);
     } else {
       setError(result.message || "Errore sconosciuto durante la registrazione.");
     }
