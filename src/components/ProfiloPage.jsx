@@ -224,7 +224,6 @@ const ProfiloPage = () => {
                       Close
                     </Button>
                   </div>
-                  {error && <p className="text-danger mt-3">{error}</p>}
                 </Form>
               </Modal.Body>
             </Modal>

@@ -1,5 +1,5 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { register } from "../redux/actions/authActions";
+import { login, register } from "../redux/actions/authActions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -44,7 +44,8 @@ const RegistrazionePage = () => {
 
     if (result.success) {
       alert("Registrazione avvenuta con successo");
-      navigate(`/`);
+      dispatch(login(formValues.email, formValues.password));
+      navigate("/");
     } else {
       setError(result.message || "Errore sconosciuto durante la registrazione.");
     }

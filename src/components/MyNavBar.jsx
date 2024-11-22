@@ -63,12 +63,13 @@ const MyNavBar = () => {
                   className=" p-0"
                   id="basic-nav-dropdown"
                 />
+                align="end"
               >
                 <NavDropdown.Item href="/profilo">Profilo</NavDropdown.Item>
                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <NavDropdown title="Login" id="basic-nav-dropdown">
+              <NavDropdown title="Login" id="basic-nav-dropdown" align="end">
                 <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                 <NavDropdown.Item href="/registrazione">Registrati</NavDropdown.Item>
 
