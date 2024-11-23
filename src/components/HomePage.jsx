@@ -11,6 +11,7 @@ const HomePage = () => {
   const error = useSelector((state) => state.amicizie.error);
   const [show, setShow] = useState(false);
   const [utenteSelezionato, setUtenteSelezionato] = useState(null);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const handleClose = () => {
     setShow(false);
@@ -46,29 +47,37 @@ const HomePage = () => {
     <div className="main">
       <Container>
         <Row>
-          <Col className="d-flex">
-            {utenti
-              ?.filter((utente) => utente.id !== utenteProfilo.id)
-              .map((utente) => (
-                <div key={utente.id}>
-                  <Card className="m-3 p-3 amiciCard text-white" bg="dark" onClick={() => handleShow(utente)}>
-                    <div className="d-flex align-items-center">
-                      <Card.Img variant="top" src={utente.immagine} className="amiciImage border border-warning" />
-                      <span className={`status-indicator ${utente.online ? "bg-success" : "bg-secondary"}`}></span>
+          {isAuthenticated ? (
+            <div>
+              <Col className="d-flex">
+                {utenti
+                  ?.filter((utente) => utente.id !== utenteProfilo.id)
+                  .map((utente) => (
+                    <div key={utente.id}>
+                      <Card className="m-3 p-3 amiciCard text-white" bg="dark" onClick={() => handleShow(utente)}>
+                        <div className="d-flex align-items-center">
+                          <Card.Img variant="top" src={utente.immagine} className="amiciImage border border-warning" />
+                          <span className={`status-indicator ${utente.online ? "bg-success" : "bg-secondary"}`}></span>
+                        </div>
+                        <Card.Body>
+                          <Card.Title className="m-0 fs-6">{utente.username}</Card.Title>
+                          <Card.Title className="m-0 fs-6">{utente.nome}</Card.Title>
+                          <Card.Title className="m-0 fs-6">{utente.cognome}</Card.Title>
+                          {isFriend(utente.id) && <div className="text-success">Amico</div>}
+                        </Card.Body>
+                      </Card>
                     </div>
-                    <Card.Body>
-                      <Card.Title className="m-0 fs-6">{utente.username}</Card.Title>
-                      <Card.Title className="m-0 fs-6">{utente.nome}</Card.Title>
-                      <Card.Title className="m-0 fs-6">{utente.cognome}</Card.Title>
-                      {isFriend(utente.id) && <div className="text-success">Amico</div>}
-                    </Card.Body>
-                  </Card>
+                  ))}
+              </Col>
+              {error && (
+                <div className="alert alert-danger" role="alert">
+                  {error}
                 </div>
-              ))}
-          </Col>
-          {error && (
+              )}
+            </div>
+          ) : (
             <div className="alert alert-danger" role="alert">
-              {error}
+              Effettua il login per vedere gli utenti
             </div>
           )}
         </Row>
