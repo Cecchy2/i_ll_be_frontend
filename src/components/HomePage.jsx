@@ -77,14 +77,14 @@ const HomePage = () => {
             </div>
           ) : (
             <Col>
-              <div className="d-flex justify-content-center mt-5">
+              <div className="d-flex justify-content-center ">
                 <Image src="/I'LLBE LOGO.webp" alt="logo" className="mt-5" width={350} roundedCircle />
               </div>
               <div className="d-flex justify-content-center">
-                <h1 className="mt-5 text-white">Benvenuto su I'LLBE</h1>
+                <h1 className="mt-3 text-white">Benvenuto su I'LLBE</h1>
               </div>
               <div className="d-flex justify-content-center">
-                <p className="fs-4 text-white">Registrati o fai il login per accedere al sito</p>{" "}
+                <p className="fs-4 text-white">Registrati o fai il login per accedere </p>{" "}
               </div>
             </Col>
           )}
