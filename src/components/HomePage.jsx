@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Modal, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Image, Modal, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { addAmico, getAllUtenti, getAmici } from "../redux/actions/amiciActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -76,9 +76,17 @@ const HomePage = () => {
               )}
             </div>
           ) : (
-            <div className="alert alert-danger" role="alert">
-              Effettua il login per vedere gli utenti
-            </div>
+            <Col>
+              <div className="d-flex justify-content-center mt-5">
+                <Image src="/I'LLBE LOGO.webp" alt="logo" className="mt-5" width={350} roundedCircle />
+              </div>
+              <div className="d-flex justify-content-center">
+                <h1 className="mt-5 text-white">Benvenuto su I'LLBE</h1>
+              </div>
+              <div className="d-flex justify-content-center">
+                <p className="fs-4 text-white">Registrati o fai il login per accedere al sito</p>{" "}
+              </div>
+            </Col>
           )}
         </Row>
       </Container>
