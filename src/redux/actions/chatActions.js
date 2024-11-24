@@ -3,6 +3,7 @@ import { Stomp } from "@stomp/stompjs";
 let stompClient = null;
 
 const url = import.meta.env.VITE_SOCKET_URL;
+console.log("WebSocket URL:", import.meta.env.VITE_SOCKET_URL);
 stompClient = Stomp.over(() => new WebSocket(url));
 
 export const connectToWebSocket = (onMessageReceived) => {
