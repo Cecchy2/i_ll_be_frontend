@@ -2,8 +2,11 @@ import { Stomp } from "@stomp/stompjs";
 
 let stompClient = null;
 
+const url = import.meta.env.VITE_SOCKET_URL;
+stompClient = Stomp.over(() => new WebSocket(url));
+
 export const connectToWebSocket = (onMessageReceived) => {
-  stompClient = Stomp.over(() => new WebSocket("ws://localhost:3002/ws"));
+  stompClient = Stomp.over(() => new WebSocket(url));
 
   stompClient.connect(
     {},

@@ -22,6 +22,9 @@ const AmiciPage = () => {
     <div className="main">
       <Container>
         <Row>
+          <div>
+            <h1 className="text-center mt-3 mb-5 text-white">• FriendsPage •</h1>
+          </div>
           {amici.map((amico) => (
             <Col key={amico.id}>
               <Card
