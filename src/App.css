@@ -157,4 +157,7 @@ transform: scale(1.2);
   .bg-secondary {
     background-color: gray;
   }
+  .creaEventoButton :hover{
+cursor: pointer;
+  }
   
