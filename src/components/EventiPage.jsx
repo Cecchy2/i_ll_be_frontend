@@ -10,8 +10,7 @@ const EventiPage = () => {
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
   const eventi = useSelector((state) => state.eventi.eventi);
-
-  console.log(eventi);
+  const user = useSelector((state) => state.utente.utente);
 
   const [newEvento, setNewEvento] = useState({
     titolo: "",
@@ -21,6 +20,7 @@ const EventiPage = () => {
     descrizione: "",
     categoria: "",
     modo: "PUBBLICO",
+    creatoreEvento: user.id,
   });
 
   useEffect(() => {
