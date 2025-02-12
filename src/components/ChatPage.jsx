@@ -44,7 +44,7 @@ const ChatPage = () => {
     <div className="main">
       <div className="d-flex justify-content-between align-items-center mt-3 mb-5">
         <h1 className="text-white">• ChatPage •</h1>
-        <Button variant="primary" onClick={() => setShowModal(true)}>
+        <Button variant="warning" onClick={() => setShowModal(true)}>
           Nuova Chat Privata
         </Button>
       </div>
