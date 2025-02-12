@@ -4,6 +4,7 @@ import utenteReducer from "../reducers/utenteReducer";
 import chatReducer from "../reducers/chatReducer";
 import amiciReducer from "../reducers/amiciReducer";
 import eventiReducer from "../reducers/eventiReducer";
+import messaggiReducer from "../reducers/messaggiReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   chat: chatReducer,
   amicizie: amiciReducer,
   eventi: eventiReducer,
+  messaggi: messaggiReducer,
 });
 
 const store = configureStore({
